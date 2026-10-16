@@ -1,6 +1,3 @@
--- Run this script in Supabase Dashboard > SQL Editor.
--- This guestbook publishes every accepted wish immediately.
--- Public visitors can read and insert wishes; they cannot update or delete them via the public API.
 
 create table if not exists public.birthday_wishes (
   id bigint generated always as identity primary key,
@@ -14,7 +11,6 @@ create index if not exists birthday_wishes_created_at_idx
 
 alter table public.birthday_wishes enable row level security;
 
--- Remove these policies first so re-running this setup remains safe.
 drop policy if exists "Anyone can read birthday wishes" on public.birthday_wishes;
 drop policy if exists "Anyone can submit birthday wishes" on public.birthday_wishes;
 
@@ -33,5 +29,3 @@ create policy "Anyone can submit birthday wishes"
     and char_length(trim(message)) between 2 and 500
   );
 
--- Deliberately no public UPDATE or DELETE policy.
--- Do not grant browser access to service_role credentials.
