@@ -378,35 +378,66 @@
   .s8.shown .portrait { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .portrait { transition: none !important; } }
 
+  /* ===== Birthday Wishes Wall (last slide) ===== */
+  .wishes-wall-slide { color: #4a0e2b; }
+  .wishes-wall-slide .inner { margin: auto; }
+  .wall-heading { text-align: center; margin-bottom: 6px; }
+  .wall-heading .whisper { color: #8b5a42; margin-bottom: 6px; }
+  .wall-heading h2 { color: var(--ivory-ink); font-size: clamp(1.8rem, min(6vw, 8vh), 3.4rem); margin: 0 0 8px; }
+  .wall-intro { max-width: 52ch; margin: 0 auto; font-family: var(--display); font-weight: 500; font-size: clamp(1.05rem, 2.5vw, 1.35rem); line-height: 1.4; }
 
-/* Birthday wishes guestbook */
-.guestbook-slide { color: var(--ivory-ink); }
-.guestbook-inner { max-width: 850px; }
-.guestbook-kicker { color: #8b5a42; margin-bottom: 10px; font-size: clamp(1rem, 2.2vw, 1.3rem); }
-.guestbook-slide h2 { margin-bottom: 14px; }
-.guestbook-intro { max-width: 58ch; line-height: 1.6; font-size: clamp(1rem, 2.2vw, 1.2rem); margin-bottom: 22px; }
-.wish-form { display: grid; gap: 9px; padding: clamp(16px, 3vw, 26px); border: 1px solid rgba(168,118,28,.34); border-radius: 18px; background: rgba(255,255,255,.64); box-shadow: 0 12px 35px rgba(58,12,34,.08); }
-.wish-form label { font-size: .92rem; font-weight: 500; }
-.wish-form input:not(.wish-honeypot), .wish-form textarea { width: 100%; border: 1px solid rgba(74,14,43,.22); border-radius: 10px; padding: 12px 14px; color: var(--ivory-ink); background: #fffdf8; font: inherit; }
-.wish-form textarea { resize: vertical; min-height: 100px; }
-.wish-form input:focus-visible, .wish-form textarea:focus-visible { outline: 3px solid rgba(184,134,47,.28); border-color: #a8761c; }
-.wish-form-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 3px; }
-#wish-count, #wish-total { color: #765b50; font-size: .85rem; }
-.wish-submit { border: 0; cursor: pointer; }
-.wish-submit:disabled { opacity: .62; cursor: wait; }
-.wish-status { min-height: 1.4em; font-size: .92rem; line-height: 1.4; }
-.wish-status[data-state="error"] { color: #9b1c31; }
-.wish-status[data-state="success"] { color: #236b45; }
-.wish-status[data-state="info"] { color: #765b50; }
-.wish-honeypot { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; }
-.wish-wall-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 26px 0 12px; }
-.wish-wall-head h3 { margin: 0; font: 700 clamp(1.45rem, 3vw, 2rem) var(--display); }
-.wish-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.wish-card { min-width: 0; padding: 16px; border: 1px solid rgba(168,118,28,.25); border-radius: 14px; background: rgba(255,255,255,.76); overflow-wrap: anywhere; }
-.wish-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-.wish-card-name { font-weight: 700; color: #4a0e2b; }
-.wish-card-date { font-size: .75rem; color: #846d61; white-space: nowrap; }
-.wish-card-message { line-height: 1.55; white-space: pre-wrap; margin: 0; }
-.wish-empty { grid-column: 1 / -1; padding: 18px; border: 1px dashed rgba(168,118,28,.4); border-radius: 12px; color: #765b50; }
-.wish-privacy { margin-top: 14px; color: #765b50; font-size: .82rem; }
-@media (max-width: 620px) { .wish-list { grid-template-columns: 1fr; } .guestbook-slide { padding-bottom: 110px; } .wish-card-head { align-items: flex-start; flex-direction: column; gap: 3px; } }
+  .wall-top { display: grid; grid-template-columns: minmax(170px, 250px) minmax(0, 1fr); gap: clamp(18px, 3.4vw, 36px); align-items: center; margin: 22px 0 26px; }
+  .wall-photo-frame { position: relative; padding: 10px 10px 14px; background: #fffdf7; border: 1px solid rgba(168,118,28,.4); box-shadow: 0 12px 28px rgba(58,12,34,.18); transform: rotate(-2deg); text-align: center; }
+  .wall-photo-frame[hidden] { display: none; }
+  .wall-portrait { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; }
+  .wall-photo-caption { margin: 10px 0 0; color: #6d2743; font-family: var(--display); font-style: italic; font-size: 1.05rem; }
+  .photo-tape, .team-note-tape, .wish-note-tape { position: absolute; z-index: 3; background: rgba(201,166,104,.62); pointer-events: none; }
+  .photo-tape { width: 64px; height: 18px; }
+  .photo-tape-top { top: -9px; left: 34%; transform: rotate(-5deg); }
+  .photo-tape-bottom { bottom: -8px; right: 8%; transform: rotate(4deg); }
+
+  .team-note { position: relative; background: #fffaf0; border: 1px solid #b8862f; box-shadow: 0 0 0 5px rgba(184,134,47,.12), 2px 10px 24px rgba(58,12,34,.15); padding: clamp(20px, 3.2vw, 32px); transform: rotate(.5deg); }
+  .team-note-tape { width: 84px; height: 18px; top: -9px; left: calc(50% - 42px); }
+  .team-note-from { font-family: var(--mono); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #8a5d14; margin: 0 0 10px; }
+  .team-note-body { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.15rem, 2.8vw, 1.6rem); line-height: 1.4; margin: 0 0 14px; }
+  .team-note-sign { font-family: var(--body); font-size: .98rem; line-height: 1.5; color: #6d4a3a; margin: 0; }
+  .team-note-sign b { color: #4a0e2b; font-weight: 500; }
+
+  .wall-list-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid #b8862f; padding-bottom: 6px; margin-bottom: 16px; }
+  .wall-list-head h3 { font-family: var(--display); font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0; }
+  .wall-note-count { font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; color: #846d61; }
+
+  .birthday-wishes-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px 16px; padding-top: 8px; }
+  .wish-empty { grid-column: 1 / -1; padding: 18px; border: 1px dashed rgba(168,118,28,.5); color: #765b50; font-family: var(--body); line-height: 1.5; text-align: center; }
+  .wish-note { position: relative; min-width: 0; padding: 24px 16px 16px; border: 1px solid rgba(168,118,28,.3); background: #fffaf0; color: #4a0e2b; box-shadow: 2px 5px 12px rgba(58,12,34,.12); overflow-wrap: anywhere; }
+  .wish-note-1 { transform: rotate(-1.2deg); }
+  .wish-note-2 { transform: rotate(1deg); background: #f5e3df; }
+  .wish-note-3 { transform: rotate(.8deg); }
+  .wish-note-4 { transform: rotate(-.8deg); background: #f5e3df; }
+  .wish-note-tape { width: 60px; height: 15px; top: -7px; left: calc(50% - 30px); }
+  .wish-note .wish-card-name { margin: 0 0 8px; font-family: var(--display); font-size: 1.15rem; font-weight: 700; }
+  .wish-note .wish-card-message { margin: 0; font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.1rem; line-height: 1.45; white-space: pre-wrap; }
+  .wish-note .wish-card-date { display: block; margin-top: 12px; color: #846d61; font-family: var(--body); font-size: .75rem; }
+  .wish-new { animation: notein .8s cubic-bezier(.2,1.2,.4,1) both; }
+  @keyframes notein { from { opacity: 0; transform: translateY(-14px) scale(.92); } to { opacity: 1; } }
+
+  .wall-footer { text-align: center; margin-top: 28px; }
+  .wall-footer > p { color: #765b50; font-family: var(--body); line-height: 1.5; }
+  .wall-actions { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .wall-leave-wish { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: #fffaf0; background: #6d2743; border: 1px solid #a8761c; text-decoration: none; }
+  .wall-leave-wish:hover { background: #4a0e2b; }
+
+  @media (max-width: 700px) {
+    .wall-top { grid-template-columns: 1fr; }
+    .wall-photo-frame { width: min(68%, 240px); justify-self: center; }
+    .wish-note-1, .wish-note-2, .wish-note-3, .wish-note-4 { transform: none; }
+    .team-note { transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .wish-new { animation: none; } }
+
+  /* tall slides: never clip the top. Short slides stay vertically centered. */
+  .pg { justify-content: flex-start; }
+  .pg > .inner { margin: auto; }
+
+  .wishes-wall-slide .pg { overflow-x: hidden; }
+  .wish-note, .team-note, .wall-photo-frame { backface-visibility: hidden; }

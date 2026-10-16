@@ -78,7 +78,8 @@
     timers.push(setTimeout(confetti, 200));
   }
   document.getElementById("run").addEventListener("click", runCode);
-  document.getElementById("more").addEventListener("click", confetti);
+  var moreBtn = document.getElementById("more");
+  if (moreBtn) { moreBtn.addEventListener("click", confetti); }
   var mergeBtn = document.getElementById("merge");
   mergeBtn.addEventListener("click", function () {
     var b = document.getElementById("badge");
@@ -284,5 +285,5 @@
 
   window.HBD = { confetti: confetti, next: function () { go(idx + 1); } };
 
-  go(0);
+  go(/#wall/i.test(location.hash) ? slides.length - 1 : 0);
 })();

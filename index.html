@@ -275,37 +275,46 @@
     </div>
   </section>
 
-  <section class="slide guestbook-slide ivory" aria-label="Birthday wishes guestbook">
-    <div class="inner guestbook-inner">
-      <div class="rule"></div>
-      <p class="whisper guestbook-kicker">A little note, a lasting memory</p>
-      <h2>Birthday <em>wishes</em></h2>
-      <p class="guestbook-intro">Leave Ma'am Zharina a birthday wish. Your message will appear on this wall after you send it.</p>
-      <form id="wish-form" class="wish-form" autocomplete="on">
-        <label for="wish-name">Your name</label>
-        <input id="wish-name" name="name" type="text" maxlength="60" required placeholder="e.g. Bryle" autocomplete="name">
-        <label for="wish-message">Your birthday wish</label>
-        <textarea id="wish-message" name="message" rows="4" maxlength="500" required placeholder="Write a kind birthday message…"></textarea>
-        <div class="wish-form-foot"><span id="wish-count">0 / 500</span><button class="btn wish-submit" id="wish-submit" type="submit">Send birthday wish</button></div>
-        <label class="wish-honeypot" aria-hidden="true" for="wish-website">Leave this field empty</label>
-        <input class="wish-honeypot" id="wish-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p id="wish-status" class="wish-status" role="status" aria-live="polite">Guestbook is loading…</p>
-      </form>
-      <div class="wish-wall-head"><h3>Wishes for Ma'am Zharina</h3><span id="wish-total">0 wishes</span></div>
-      <div id="wish-list" class="wish-list" aria-live="polite"><p class="wish-empty">Loading birthday wishes…</p></div>
-      <p class="wish-privacy">Please keep messages kind and avoid sharing private information.</p>
-    </div>
-  </section>
+  
+  <section class="slide wishes-wall-slide ivory" aria-label="Birthday Wishes Wall">
+    <div class="inner wishes-wall-inner">
+      <div class="wall-heading">
+        <p class="whisper">From Europac Team, with love</p>
+        <h2>Birthday <em>Wishes Wall</em></h2>
+        <p class="wall-intro">Warm words for Ma&rsquo;am Zharina, from the people who are lucky to work with her.</p>
+      </div>
 
-  <section class="slide s8 dark framed center" aria-label="Finale">
-    <div class="inner">
-      <svg class="crown" aria-hidden="true"><use href="#crown"/></svg>
-      <div class="portrait"><img src="images/zharina.jpg" alt="Ma'am Zharina" onerror="this.parentNode.hidden=true"></div>
-      <h2 class="hb gold foil-in" style="margin:0">Happy Birthday</h2>
-      <p class="nm">Ma'am Zharina</p>
-      <div class="orn"><i></i></div>
-      <p class="exit">Month-end is over. Time to celebrate. Everything is balanced.</p>
-      <button class="btn" id="more" type="button">More sparkle</button>
+      <div class="wall-top">
+        <div class="wall-photo-frame">
+          <span class="photo-tape photo-tape-top" aria-hidden="true"></span>
+          <img class="wall-portrait" src="images/zharina.jpg" alt="Ma&rsquo;am Zharina" onerror="this.parentNode.hidden=true">
+          <p class="wall-photo-caption">Celebrating you, Ma&rsquo;am Zharina</p>
+          <span class="photo-tape photo-tape-bottom" aria-hidden="true"></span>
+        </div>
+
+        <article class="team-note" aria-label="Message from Europac Team">
+          <span class="team-note-tape" aria-hidden="true"></span>
+          <p class="team-note-from">From Europac Team</p>
+          <p class="team-note-body">Dear Ma&rsquo;am Zharina, thank you for leading us with patience, for trusting us, and for making even the busiest month-end feel manageable. Today we celebrate you. Happy Birthday from all of us at Europac!</p>
+          <p class="team-note-sign">With respect and a lot of cake,<br><b>Your Europac Team</b></p>
+        </article>
+      </div>
+
+      <div class="wall-list-head">
+        <h3>Messages from everyone</h3>
+        <span class="wall-note-count" id="wall-wish-count">Loading wishes&hellip;</span>
+      </div>
+      <div id="birthday-wishes-wall" class="birthday-wishes-wall" aria-live="polite" aria-label="Birthday messages">
+        <p class="wish-empty">Loading birthday wishes&hellip;</p>
+      </div>
+
+      <div class="wall-footer">
+        <p>Every kind word makes this celebration more special.</p>
+        <div class="wall-actions">
+          <a class="btn wall-leave-wish" href="wishes.html" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">&#9998;</span> Leave a Birthday Wish</a>
+          <button class="btn wall-sparkle" id="more" type="button">More sparkle</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -324,6 +333,6 @@
 
 <script src="script.js"></script>
 <script src="game.js"></script>
-<script type="module" src="wishes.js"></script>
+<script type="module" src="wall.js"></script>
 </body>
 </html>
