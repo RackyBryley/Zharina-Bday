@@ -275,6 +275,28 @@
     </div>
   </section>
 
+  <section class="slide guestbook-slide ivory" aria-label="Birthday wishes guestbook">
+    <div class="inner guestbook-inner">
+      <div class="rule"></div>
+      <p class="whisper guestbook-kicker">A little note, a lasting memory</p>
+      <h2>Birthday <em>wishes</em></h2>
+      <p class="guestbook-intro">Leave Ma'am Zharina a birthday wish. Your message will appear on this wall after you send it.</p>
+      <form id="wish-form" class="wish-form" autocomplete="on">
+        <label for="wish-name">Your name</label>
+        <input id="wish-name" name="name" type="text" maxlength="60" required placeholder="e.g. Bryle" autocomplete="name">
+        <label for="wish-message">Your birthday wish</label>
+        <textarea id="wish-message" name="message" rows="4" maxlength="500" required placeholder="Write a kind birthday message…"></textarea>
+        <div class="wish-form-foot"><span id="wish-count">0 / 500</span><button class="btn wish-submit" id="wish-submit" type="submit">Send birthday wish</button></div>
+        <label class="wish-honeypot" aria-hidden="true" for="wish-website">Leave this field empty</label>
+        <input class="wish-honeypot" id="wish-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p id="wish-status" class="wish-status" role="status" aria-live="polite">Guestbook is loading…</p>
+      </form>
+      <div class="wish-wall-head"><h3>Wishes for Ma'am Zharina</h3><span id="wish-total">0 wishes</span></div>
+      <div id="wish-list" class="wish-list" aria-live="polite"><p class="wish-empty">Loading birthday wishes…</p></div>
+      <p class="wish-privacy">Please keep messages kind and avoid sharing private information.</p>
+    </div>
+  </section>
+
   <section class="slide s8 dark framed center" aria-label="Finale">
     <div class="inner">
       <svg class="crown" aria-hidden="true"><use href="#crown"/></svg>
@@ -302,5 +324,6 @@
 
 <script src="script.js"></script>
 <script src="game.js"></script>
+<script type="module" src="wishes.js"></script>
 </body>
 </html>
