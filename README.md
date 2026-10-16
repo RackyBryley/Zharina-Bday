@@ -9,21 +9,6 @@ Static GitHub Pages birthday website with a Supabase-powered guestbook. The exis
 - `supabase-setup.sql` — table, constraints, index, and Row Level Security policies.
 - `.nojekyll` — tells GitHub Pages not to run Jekyll processing.
 
-## Set up Supabase
-
-1. Create a project at https://supabase.com/.
-2. In Supabase, open **SQL Editor**, create a query, paste all of `supabase-setup.sql`, and run it.
-3. Open the project's **Connect** or **Project Settings → API** page. Copy the Project URL and the **publishable/anon public key**.
-4. Edit `supabase-config.js` and replace the two placeholders:
-
-   ```js
-   export const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-   export const SUPABASE_ANON_KEY = 'YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY';
-   ```
-
-5. Never put a `service_role` key or secret key in this website. Browser code is public.
-6. Optional realtime: in Supabase Database/Replication, enable Realtime for `public.birthday_wishes`. Reading and submitting still work without realtime; new messages will refresh after submit or page load.
-
 ## Upload to GitHub Pages
 
 1. Extract this ZIP.
