@@ -1,4 +1,4 @@
-/* Public browser configuration only. Never put a service_role key in this file. */
+
 export const SUPABASE_URL =
   'https://vjspaldjlrvkydtcmetl.supabase.co';
 
