@@ -1,4 +1,4 @@
-/* Month-end close mini game: journal entries -> bank reconciliation -> financial statements */
+
 (function () {
   "use strict";
   var $ = function (id) { return document.getElementById(id); };
