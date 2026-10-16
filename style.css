@@ -368,3 +368,12 @@
   .fstamp { display: inline-block; margin-top: 10px; border: 3px double #9b1c46; color: #9b1c46; font-family: var(--display); font-weight: 700; font-style: italic; font-size: clamp(1.5rem, 5vw, 2.6rem); padding: .1em .6em; transform: rotate(-4deg); animation: stampin .45s cubic-bezier(.2,1.6,.4,1) both; }
   @keyframes stampin { from { opacity: 0; transform: rotate(-4deg) scale(1.8); } to { opacity: 1; transform: rotate(-4deg) scale(1); } }
   @media (prefers-reduced-motion: reduce) { .fstamp { animation: none; } }
+
+  /* finale portrait */
+  .s8 .inner { margin: auto; }
+  .s8 .crown { width: clamp(48px, 8vh, 80px); margin-bottom: clamp(6px, 1.4vh, 12px); }
+  .portrait { width: min(52vw, 30vh, 220px); aspect-ratio: 1; margin: 0 auto clamp(10px, 2vh, 18px); border-radius: 50%; padding: 5px; background: var(--foil); box-shadow: 0 0 0 6px rgba(230,194,122,.15), 0 10px 34px rgba(0,0,0,.45); opacity: 0; transform: scale(.85); transition: opacity .9s ease .5s, transform .9s cubic-bezier(.2,.8,.2,1) .5s; }
+  .portrait[hidden] { display: none; }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 50%; border: 3px solid var(--night); }
+  .s8.shown .portrait { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .portrait { transition: none !important; } }
