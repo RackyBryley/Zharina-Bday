@@ -1,0 +1,196 @@
+
+:root {
+  color-scheme: light;
+  --cream: #f8f0e3;
+  --paper: #fffaf2;
+  --pink: #f5e3df;
+  --burgundy: #4a0e2b;
+  --rose: #6d2743;
+  --gold: #a8761c;
+  --muted: #765b50;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #fffaf5, transparent 65%),
+    var(--cream);
+  color: var(--burgundy);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.wish-page {
+  width: min(100% - 32px, 760px);
+  margin: 0 auto;
+  padding: 30px 0 45px;
+}
+
+.back-link {
+  color: var(--rose);
+  text-decoration: none;
+}
+
+.back-link:hover { text-decoration: underline; }
+
+.wish-page-heading {
+  text-align: center;
+  padding: 38px 0 25px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.wish-page-heading h1 {
+  margin: 10px 0;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+}
+
+.wish-page-heading p:last-child {
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.wish-form {
+  display: grid;
+  gap: 10px;
+  padding: clamp(18px, 4vw, 30px);
+  background: var(--paper);
+  border: 1px solid rgba(168, 118, 28, .4);
+  box-shadow: 0 12px 30px rgba(58, 12, 34, .08);
+}
+
+.wish-form label {
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.wish-form input:not(.wish-honeypot),
+.wish-form textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d8c6b9;
+  border-radius: 6px;
+  background: #fffdf9;
+  color: var(--burgundy);
+  font: inherit;
+}
+
+.wish-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.wish-form input:focus-visible,
+.wish-form textarea:focus-visible,
+.wish-submit:focus-visible {
+  outline: 3px solid rgba(168, 118, 28, .35);
+  outline-offset: 2px;
+}
+
+.wish-form-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#wish-count,
+#wish-total,
+.wish-card-date {
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.wish-submit {
+  border: 1px solid var(--gold);
+  padding: 12px 18px;
+  background: var(--rose);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.wish-submit:hover { background: var(--burgundy); }
+.wish-submit:disabled { opacity: .6; cursor: wait; }
+
+.wish-status {
+  min-height: 1.4em;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.wish-status[data-state="error"] { color: #9b1c31; }
+.wish-status[data-state="success"] { color: #236b45; }
+
+.wish-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+.recent-wishes { margin-top: 36px; }
+.recent-wishes h2 { font-size: 1.7rem; }
+.recent-description { color: var(--muted); line-height: 1.6; }
+
+.wish-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.wish-card {
+  min-width: 0;
+  padding: 16px;
+  background: var(--paper);
+  border: 1px solid rgba(168, 118, 28, .3);
+  overflow-wrap: anywhere;
+}
+
+.wish-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.wish-card-name { font-weight: 700; }
+
+.wish-card-message {
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.wish-empty {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border: 1px dashed #c9a668;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.recent-wishes .wish-card-date { display: block; }
+
+footer {
+  padding-top: 35px;
+  text-align: center;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+@media (max-width: 560px) {
+  .wish-list { grid-template-columns: 1fr; }
+  .wish-form-foot { align-items: stretch; flex-direction: column; }
+  .wish-submit { width: 100%; }
+}
+
+.wish-wall-link { margin: 0; }
+.wish-wall-link a { color: var(--rose); font-weight: 700; }
