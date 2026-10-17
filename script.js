@@ -285,5 +285,32 @@
 
   window.HBD = { confetti: confetti, next: function () { go(idx + 1); } };
 
-  go(/#wall/i.test(location.hash) ? slides.length - 1 : 0);
+  /* Perf: only the pages near the current one are painted. */
+  var oldGo = go;
+  go = function (n) {
+    oldGo(n);
+    slides.forEach(function (sl, i) { sl.classList.toggle("far", Math.abs(i - idx) > 2); });
+  };
+
+  /* Start only when the fonts are ready (or after 1.8s), so nothing jumps or re-flows on open. */
+  var startIdx = /#wall/i.test(location.hash) ? slides.length - 1 : 0;
+  var revealed = false;
+  function reveal() {
+    if (revealed) { return; }
+    revealed = true;
+    go(startIdx);
+    document.documentElement.classList.remove("boot");
+  }
+  var fontsReady = Promise.resolve();
+  try {
+    if (document.fonts && document.fonts.load) {
+      fontsReady = Promise.all([
+        document.fonts.load('700 48px "Cormorant Garamond"'),
+        document.fonts.load('italic 500 24px "Cormorant Garamond"'),
+        document.fonts.load('400 16px "Jost"'),
+        document.fonts.load('400 14px "JetBrains Mono"')
+      ]).catch(function () {});
+    }
+  } catch (e) {}
+  Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 1800); })]).then(reveal);
 })();

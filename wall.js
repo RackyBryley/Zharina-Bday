@@ -144,4 +144,14 @@ async function start() {
   setInterval(() => { if (!document.hidden) loadWallWishes(); }, 30000);
 }
 
-if (wall && counter) start();
+if (wall && counter) {
+  // Opened straight on the wall: start now. Otherwise wait until the title page has finished animating,
+  // so loading the live-wishes library never makes the first page stutter.
+  if (/#wall/i.test(location.hash)) {
+    start();
+  } else {
+    const later = () => setTimeout(start, 3500);
+    if ('requestIdleCallback' in window) requestIdleCallback(later, { timeout: 6000 });
+    else later();
+  }
+}
